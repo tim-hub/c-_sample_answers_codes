@@ -30,10 +30,19 @@ namespace examTesting
             // multi threading a.11
             BeginThread();
 
+
+            //a.13 convert binary string to int
+            Console.WriteLine(IntFromBinaryString("11110000"));
+
+            //a.14 convert in to binary string
+            Console.WriteLine(StringIntToBinaryString(2));
+
             // a.12 exception
             int n = 19;
 
             NoSmallNumbers(n);
+
+
 
         }
 
@@ -82,7 +91,41 @@ namespace examTesting
             }
         }
 
+        //a.13
+        private static int IntFromBinaryString(string s1){
+            int c = 0;
+            int n = 0;
 
+
+            for (int i = 128; i > 0; i = i >> 1){
+            //for (int i = 128; i > 0; i = i /2){ // these two lines are same
+                if(s1[c] == '1'){
+                    n += i;
+                }
+                c++;
+            }
+
+            return n;
+
+        }
+
+        //a.14
+        private static string StringIntToBinaryString(int n1){
+            char[] bits = "00000000".ToCharArray();
+
+            int c = 0;
+
+            for (int i = 128; i > 0; i=i>>1){
+                if (n1/i >0){
+                    bits[c] = '1';
+                    n1 -= i;
+                }
+                c++;
+            }
+
+            return new string(bits);
+        }
+        
     }
 
 
