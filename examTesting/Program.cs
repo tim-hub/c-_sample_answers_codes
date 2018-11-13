@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 
+
 namespace examTesting
 {
     class Program
@@ -29,6 +30,10 @@ namespace examTesting
             // multi threading a.11
             BeginThread();
 
+            // a.12 exception
+            int n = 19;
+
+            NoSmallNumbers(n);
 
         }
 
@@ -44,6 +49,16 @@ namespace examTesting
         public static void BMethod(){
             // no output in console if it is backgorund
             Console.WriteLine("bmethod");
+        }
+
+
+        // a.12
+        public static string NoSmallNumbers(int n){
+            if (n<100){
+                throw new NumberTooSmallException("too small number");
+            }else{
+                return n.ToString();
+            }
         }
 
         //a.5
@@ -66,6 +81,8 @@ namespace examTesting
                 return Quantity * Cost;
             }
         }
+
+
     }
 
 
